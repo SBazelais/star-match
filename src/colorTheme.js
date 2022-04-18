@@ -5,3 +5,5 @@ const colors = {
   wrong: "lightcoral",
   candidate: "deepskyblue"
 };
+
+export default colors;
