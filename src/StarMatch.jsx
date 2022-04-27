@@ -2,25 +2,13 @@ import "./styles.css";
 import utils from "./utils";
 
 import { useState } from "react";
-import {StarsDisplay} from './components/StarsDisplay'
-import { NumbersDisplay } from './components/NumbersDisplay'
-
-
+import { StarsDisplay } from "./components/StarsDisplay";
+import { NumbersDisplay } from "./components/NumbersDisplay";
 
 export default function StarMatch() {
   const [stars, setStars] = useState(utils.random(1, 9));
-  const [availableNumbers, setavailableNumbers] = useState(utils.range(1, 9))
-  const [candidateNums, setCandidateNums] = useState([])
+  const availableData = (available) => console.log(available);
 
-  const onNumberClick = (value, currentStatus)=> {
-    if (currentStatus === 'used'){
-      return 
-    }
-
-
-
-  }
-  
   return (
     <div className="game">
       <div className="help">
@@ -28,15 +16,14 @@ export default function StarMatch() {
       </div>
       <div className="body">
         <div className="left">
-          <StarsDisplay  stars={stars}/>
+          <StarsDisplay stars={stars} />
         </div>
         <div className="right">
-            <NumbersDisplay 
-              stars={stars}
-              onClick={onNumberClick}
-              availableNumbers={availableNumbers}
-              candidateNums={candidateNums}
-              />
+          <NumbersDisplay
+            stars={stars}
+            setStars={setStars}
+            availableData={availableData}
+          />
         </div>
       </div>
       <div className="timer">Time Remaining: 10</div>
