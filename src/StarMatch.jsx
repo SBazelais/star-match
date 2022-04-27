@@ -5,9 +5,22 @@ import { useState } from "react";
 import {StarsDisplay} from './components/StarsDisplay'
 import { NumbersDisplay } from './components/NumbersDisplay'
 
+
+
 export default function StarMatch() {
   const [stars, setStars] = useState(utils.random(1, 9));
+  const [availableNumbers, setavailableNumbers] = useState(utils.range(1, 9))
+  const [candidateNums, setCandidateNums] = useState([])
 
+  const onNumberClick = (value, currentStatus)=> {
+    if (currentStatus === 'used'){
+      return 
+    }
+
+
+
+  }
+  
   return (
     <div className="game">
       <div className="help">
@@ -18,7 +31,12 @@ export default function StarMatch() {
           <StarsDisplay  stars={stars}/>
         </div>
         <div className="right">
-            <NumbersDisplay />
+            <NumbersDisplay 
+              stars={stars}
+              onClick={onNumberClick}
+              availableNumbers={availableNumbers}
+              candidateNums={candidateNums}
+              />
         </div>
       </div>
       <div className="timer">Time Remaining: 10</div>
